@@ -33,6 +33,12 @@ async function run (){
             const notes = await noteCollection.find(query).toArray();
             res.send(notes)
         });
+
+        app.post('/notes',async(req, res)=>{
+          const data = req.body;
+          const result = await noteCollection.insertOne(data);
+          res.send(result)
+      });
     }
     finally{
 
