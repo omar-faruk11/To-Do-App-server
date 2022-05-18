@@ -28,18 +28,18 @@ async function run (){
         const noteCollection = client.db("notes").collection("note");
         console.log('connected');
         app.get('/notes',async(req, res)=>{
-            const email = req.query.email;
-            const query = {email}
-            const notes = await noteCollection.find(query).toArray();
-            res.send(notes)
+            const email = req.query;
+            const coursor = noteCollection.find(email)
+            const result = await coursor.toArray();
+            res.send(result)
         });
 
         app.post('/notes',async(req, res)=>{
-          const data = req.body;
+          const data = req.body.notesData;
           const result = await noteCollection.insertOne(data);
           res.send(result)
       });
-      
+
       app.delete('/notes/:id',async(req, res)=>{
         const id = req.params.id;
         const filter = {
@@ -60,4 +60,4 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});
