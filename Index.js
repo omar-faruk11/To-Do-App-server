@@ -44,9 +44,9 @@ async function run (){
         const id = req.params.id;
         const filter = {
             _id: ObjectId(id)
-          }
-        const result = await noteCollection.deleteOne(filter)
-        res.send(result)
+          };
+        const result = await noteCollection.deleteOne(filter);
+        res.send(result);
     });
     }
     finally{
