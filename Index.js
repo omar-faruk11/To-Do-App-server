@@ -33,7 +33,7 @@ async function run (){
             const result = await coursor.toArray();
             res.send(result);
         });
-
+        
         app.post('/notes',async(req, res)=>{
           const data = req.body.notesData;
           const result = await noteCollection.insertOne(data);
