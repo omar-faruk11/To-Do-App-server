@@ -31,13 +31,13 @@ async function run (){
             const email = req.query;
             const coursor = noteCollection.find(email)
             const result = await coursor.toArray();
-            res.send(result)
+            res.send(result);
         });
 
         app.post('/notes',async(req, res)=>{
           const data = req.body.notesData;
           const result = await noteCollection.insertOne(data);
-          res.send(result)
+          res.send(result);
       });
 
       app.delete('/notes/:id',async(req, res)=>{
@@ -55,9 +55,9 @@ async function run (){
 }run().catch(console.dir);
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World!');
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`);
 });
