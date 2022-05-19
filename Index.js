@@ -48,8 +48,7 @@ async function run (){
         const result = await noteCollection.deleteOne(filter);
         res.send(result);
     });
-    }
-    finally{
+    }finally{
 
     }
 }run().catch(console.dir);
